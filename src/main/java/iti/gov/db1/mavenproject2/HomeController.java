@@ -27,7 +27,7 @@ public class HomeController implements Initializable {
 
     Stage stage;
     File imgFileName;
-    String msg;
+    public  String msg;
 
     public HomeController() {
 
@@ -48,25 +48,26 @@ public class HomeController implements Initializable {
     private ImageView myImageView;
 
     
-
+    @FXML
     private void pushPictureImage(ActionEvent event) {
         FileChooser imgChooser = new FileChooser();
         imgFileName = imgChooser.showOpenDialog(stage);
         myImageView.setImage(new Image(imgFileName.toString()));
     }
-    
+    @FXML
     private void pushsaveButton(ActionEvent event) {
         msg=myTextField.getText();
         System.out.println(msg);
     }
-
+    @FXML
     private void chatNow(ActionEvent event) {
-        System.out.println("Hi");
+        
+        System.out.println(myTextField.getText());
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
+       
         
     }
 }

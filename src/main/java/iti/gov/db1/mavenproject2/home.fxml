@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="650.0" stylesheets="@homecss.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="titleLabel" alignment="CENTER" prefHeight="41.0" prefWidth="650.0" styleClass="myLable" stylesheets="@homecss.css" text="Chat Room " textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font></Label>
+      <Button id="chatButton" layoutX="253.0" layoutY="353.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="126.0" styleClass="myLable" stylesheets="@homecss.css" text="Chat Now" textFill="#fff9f9">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Button>
+      <Button id="pictureButton" layoutX="301.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="32.0" stylesheets="@homecss.css" />
+      <TextField id="myTextField" layoutX="186.0" layoutY="287.0" prefHeight="31.0" prefWidth="261.0" promptText="Enter Your name" stylesheets="@homecss.css" />
+      <ImageView id="myImageView" fitHeight="150.0" fitWidth="200.0" layoutX="242.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../person.png" />
+         </image>
+      </ImageView>
+      <ImageView id="plusImgView" fitHeight="31.0" fitWidth="32.0" layoutX="301.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../plus3.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

@@ -27,7 +27,7 @@ public class HomeController implements Initializable {
 
     Stage stage;
     File imgFileName;
-    public  String msg;
+    public  String userName;
 
     public HomeController() {
 
@@ -49,18 +49,20 @@ public class HomeController implements Initializable {
 
     
     @FXML
-    private void pushPictureImage(ActionEvent event) {
+    private void chooseImage() {
+        
         FileChooser imgChooser = new FileChooser();
-        imgFileName = imgChooser.showOpenDialog(stage);
-        myImageView.setImage(new Image(imgFileName.toString()));
+        imgChooser.setTitle("choose new image");
+        imgFileName = imgChooser.showOpenDialog(myImageView.getScene().getWindow());
+        if(imgFileName !=null) {
+            myImageView.setImage(new Image(imgFileName.toString()));
+        }
     }
-    @FXML
-    private void pushsaveButton(ActionEvent event) {
-        msg=myTextField.getText();
-        System.out.println(msg);
-    }
+    
     @FXML
     private void chatNow(ActionEvent event) {
+
+        userName=myTextField.getText();
         
         System.out.println(myTextField.getText());
     }

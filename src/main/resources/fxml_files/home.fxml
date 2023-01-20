@@ -20,7 +20,7 @@
          </font>
       </Button>
       <TextField id="myTextField" fx:id="myTextField" layoutX="186.0" layoutY="287.0" prefHeight="31.0" prefWidth="261.0" promptText="Enter Your name" stylesheets="@homecss.css" />
-      <ImageView id="myImageView" fx:id="myImageView" fitHeight="150.0" fitWidth="200.0" layoutX="242.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="myImageView" fx:id="myImageView" fitHeight="150.0" fitWidth="200.0" layoutX="242.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" onMouseClicked='#chooseImage'>
          <image>
             <Image url="@../images/person.png" />
          </image>

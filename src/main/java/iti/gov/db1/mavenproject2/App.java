@@ -18,10 +18,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml_files/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml_files/firstscr.fxml"));
 
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root);
+        
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

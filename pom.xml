@@ -15,19 +15,23 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
+                
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
-                    <excludes>
-                        <exclude>module-info.java</exclude>
-                    </excludes>
+                    <mainClass>iti.gov.db1.mavenproject2.App</mainClass>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
-                <configuration>
-                    <mainClass>iti.gov.db1.mavenproject2.App</mainClass>
-                </configuration>
+                
                 <executions>
                     <execution>
                         <!-- Default configuration for running -->
@@ -79,9 +83,15 @@
             <dependencies>
                 <dependency>
                     <groupId>org.openjfx</groupId>
-                    <artifactId>javafx-controls</artifactId>
-                    <version>11</version>
+                    <artifactId>javafx-fxml</artifactId>
+                    <version>19</version>
                 </dependency>
+                <dependency>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-controls</artifactId>
+                    <version>19</version>
+                </dependency>
+                                
             </dependencies>
         </profile>
     </profiles>

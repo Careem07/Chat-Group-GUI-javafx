@@ -58,6 +58,7 @@ public class HomeController implements Initializable {
     private void chooseImage() {
         
         FileChooser imgChooser = new FileChooser();
+        imgChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter( ".png","*.jpg*"));
         imgChooser.setTitle("choose new image");
         imgFileName = imgChooser.showOpenDialog(myImageView.getScene().getWindow());
 

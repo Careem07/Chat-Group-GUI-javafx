@@ -1,10 +1,13 @@
-package iti.gov.db1.mavenproject2;
+package gov.iti.db1.mavenproject2;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
+import gov.iti.service.ClientInt;
+import gov.iti.service.Connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,26 +56,34 @@ public class SenderScreenController  implements Initializable{
     String name;
     File img;
     Image image;
+    String msg="";
+    ClientInt sender;
 
     public SenderScreenController() {
 
     }
 
-    public SenderScreenController(String name,File img) {
+    public SenderScreenController(String name, File img) {
 
         this.name=name;
         this.img=img;
     }
 
+    public void setClient(ClientInt sender) {
+        this.sender=sender;
+    }
+
     public void sendMessage(ActionEvent e){ 
         if(sendTextField.getText() != ""){
+            
             HBox message = new HBox();
             message.setAlignment(Pos.CENTER_RIGHT);
             message.prefHeight(42);
             message.prefWidth(394);
             message.setLayoutY(20);
+            message.setLayoutX(60);
 
-            Label lbl = new Label("  " + sendTextField.getText() + "  ");
+            Label lbl = new Label("  " + sendTextField.getText()  + "  ");
             lbl.setAlignment(Pos.CENTER);
             Color col = Color.rgb(255,255,255);
             CornerRadii corn = new CornerRadii(15);
@@ -90,10 +101,60 @@ public class SenderScreenController  implements Initializable{
 
             
             mainVBox.getChildren().add(message);
+
+            msg=sendTextField.getText().toString();
+
+            try {
+                Connection.getInstance().getServerRef().tellOthers(msg, sender);
+            } catch (RemoteException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             
             sendTextField.setText("");
 
         }
+    }
+
+    public void appendMsgToTextArea(String text) { //label.setTextAlignment(TextAlignment.LEFT)
+
+        HBox message = new HBox();
+            message.setAlignment(Pos.CENTER_LEFT);
+            message.prefHeight(42);
+            message.prefWidth(394);
+            message.setLayoutY(20);
+            message.setLayoutX(60);
+
+            Label lbl = new Label("  " + text + "  ");
+            lbl.setAlignment(Pos.CENTER);
+            Color col = Color.rgb(255,255,255);
+            CornerRadii corn = new CornerRadii(15);
+            Background background = new Background(new BackgroundFill(col, corn, Insets.EMPTY));
+            lbl.setBackground(background);
+            lbl.setMinHeight(20);
+            lbl.setLayoutY(10);
+
+            ImageView image = new ImageView(senderImage.getImage());
+            image.setFitHeight(35);
+            image.setFitWidth(35);
+            message.getChildren().add(lbl);
+            message.getChildren().add(image);
+            message.getChildren().add(new Label(" "));
+
+            
+            mainVBox.getChildren().add(message);
+    }
+
+    public void setUserName(String userName) {
+        name=userName;
+    }
+
+    public void setImageFile(File imgFile) {
+        img=imgFile;
+    }
+
+    public SenderScreenController getController() {
+        return this;
     }
 
 
@@ -112,6 +173,10 @@ public class SenderScreenController  implements Initializable{
         }
         grpName.setText(name);
         
+    }
+
+    public ClientInt getClientObj() {
+        return sender;
     }
     
 }

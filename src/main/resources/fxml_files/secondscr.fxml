@@ -63,7 +63,7 @@
             <URL value="@../style_files/firstscr.css" />
          </stylesheets>
       </VBox>
-      <ImageView fx:id="senderImage" fitHeight="74.0" fitWidth="73.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: 30;">
+      <ImageView fx:id="senderImage" fitHeight="74.0" fitWidth="73.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" >
          <image>
             <Image url="@../images/pic2.png" />
          </image>

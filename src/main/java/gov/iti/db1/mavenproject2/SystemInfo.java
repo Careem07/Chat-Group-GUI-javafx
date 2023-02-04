@@ -1,4 +1,4 @@
-package iti.gov.db1.mavenproject2;
+package gov.iti.db1.mavenproject2;
 
 public class SystemInfo {
 

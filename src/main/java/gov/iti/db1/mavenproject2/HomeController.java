@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package iti.gov.db1.mavenproject2;
+package gov.iti.db1.mavenproject2;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
+import gov.iti.service.ClientImp;
+import gov.iti.service.Connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,13 +37,15 @@ public class HomeController implements Initializable {
     FXMLLoader loader;
     SenderScreenController controller;
     public  String userName;
+    ClientImp client;
 
     public HomeController() {
 
     }
 
-    public HomeController(Stage stage) {
+    public HomeController(Stage stage, SenderScreenController controller) {
         this.stage=stage;
+        this.controller=controller;
     }
 
     
@@ -74,16 +79,20 @@ public class HomeController implements Initializable {
     
         Parent root;
         try {
+
+            
+
             stage = (Stage) myImageView.getScene().getWindow();
             loader=new FXMLLoader();
 
-            if(imgFileName ==null) {
-                imgFileName=new File(getClass().getClassLoader().getResource("pic.png").getFile());
+            if(imgFileName !=null) {
+                //imgFileName=new File(getClass().getClassLoader().getResource("pic.png").getFile());
+                controller.setImageFile(imgFileName);
             }
 
-            if(myTextField.getText().isBlank()) userName="user";
+            if(!myTextField.getText().isBlank()) controller.setUserName(userName);
 
-            controller=new SenderScreenController(userName,imgFileName);
+            
             loader.setController(controller);
             root = loader.load(getClass().getResource("/fxml_files/firstscr.fxml").openStream());
 
@@ -101,6 +110,14 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
        
+        try {
+            client = new ClientImp(controller);
+            Connection.getInstance().getServerRef().register(client);
+            controller.setClient(client);
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
     }
 }
